@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SheetsController;
+use App\Http\Controllers\smartsheet\SheetsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +17,15 @@ use App\Http\Controllers\SheetsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/fetch', [SheetsController::class, 'fetch']);
 
+Route::name('smartsheet-api')->prefix('smartsheet')->group(function() {
+    Route::get('/getall', [SheetsController::class, 'getall']);
+    Route::get('/sheetdetail/{id}', [SheetsController::class, 'sheetdetail']);
+    Route::get('/createsheet', [SheetsController::class, 'create']);
+});
+
+Route::name('teamdeck-api')->prefix('teamdeck')->group(function() {
+    Route::get('/getall', [SheetsController::class, 'getall']);
+    Route::get('/sheetdetail/{id}', [SheetsController::class, 'sheetdetail']);
+    Route::get('/createsheet', [SheetsController::class, 'create']);
+});

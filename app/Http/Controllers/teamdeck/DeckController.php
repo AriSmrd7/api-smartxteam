@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\teamdeck;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use App\Http\Controllers\Controller;
 
-class SheetsController extends Controller
+class DeckController extends Controller
 {
 
-    public function fetch()
+    //method get
+    public function getall()
     {
         $token = '4rqCkLoFab0ZwmGdcy0Tin35TevXmSLpfwioa';
 
         $client = new Client();
-        $url = 'https://api.smartsheet.com/2.0/sheets';
+        $url = 'https://api.smartsheet.com/2.0/sheets/';
 
         $headers = [
             'Content-Type' => 'application/json',
